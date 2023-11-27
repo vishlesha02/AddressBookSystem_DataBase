@@ -24,3 +24,8 @@ INSERT INTO AddressBook VALUES('Elena','Gilbert','Gilbert House','Mumbai','Mahar
 INSERT INTO AddressBook VALUES('Germie','Gilbert','Gilbert House','Mumbai','Maharashtra','410206','82914897536','gilbert@987');
 INSERT INTO AddressBook VALUES('Damon','Salvator','Salvator House','Mystic Falls','Mystic','410606','8275365614','salvator@976');
 INSERT INTO AddressBook VALUES('Stefan','Salvator','Salvator House','Mystic Falls','Mystic','410206','8291459713','stefan@987');
+
+/*----UC4--------*/
+UPDATE AddressBook 
+SET State = 'Maharashtra'
+WHERE FirstName = 'Katrina';
