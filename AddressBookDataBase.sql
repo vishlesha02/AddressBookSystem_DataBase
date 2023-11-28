@@ -55,26 +55,6 @@ WHERE FirstName = 'Katrina';
    /*----UC9--------*/
   ALTER TABLE AddressBook
   ADD COLUMN Type varchar (50);
-  
-UPDATE AddressBook 
-SET Type = 'Family'
-WHERE  FirstName = 'Damon'; 
-
-UPDATE AddressBook 
-SET Type = 'Family'
-WHERE  FirstName = 'Stefan'; 
-
-UPDATE AddressBook 
-SET Type = 'Professional'
-WHERE  FirstName = 'Elena'; 
-
-UPDATE AddressBook 
-SET Type = 'Friend'
-WHERE  FirstName = 'Katherine'; 
-
-UPDATE AddressBook 
-SET Type = 'Professional'
-WHERE  FirstName = 'Katrina'; 
 
 Alter table addressbook drop column Type;
 
@@ -87,13 +67,25 @@ desc Type;
 
 alter table TYPE add column Type_Name varchar(50) not null;  
 
-insert INTO TYPE VALUES(10,1,'Friend'); 
-insert INTO TYPE VALUES(20,2,'Family');
-insert INTO TYPE VALUES(30,3,'Profession'); 
-
 select * from TYPE;
 
 /*----UC10--------*/
  SELECT Type_Name, COUNT(*) as TypeCount
   FROM TYPE
   group by Type_Name; 
+  
+  
+  /*----UC11--------*/
+insert INTO TYPE VALUES(10,1,'Friend'); 
+insert INTO TYPE VALUES(20,2,'Family');
+insert INTO TYPE VALUES(30,3,'Profession'); 
+
+  /*----UC13--------*/
+ show databases; 
+ show tables;
+desc Type; 
+desc addressbook;
+select * from addressbook;
+select * from Type;
+ 
+
