@@ -16,6 +16,9 @@ EmailID varchar (50)
 );
 SELECT * FROM AddressBook;
 
+ALTER TABLE Addressbook DROP primary key; 
+
+ALTER TABLE Addressbook add ID int not null auto_increment primary key;
 /*----UC3--------*/
 INSERT INTO AddressBook(FirstName, LastName, Address, City, State, Zip, PhoneNumber, EmailID)
 VALUES 					('Katherine','Pierce','15DCRoad','Bulgeria','Petrova','123456','1234567890','katherine@123');
@@ -29,3 +32,68 @@ INSERT INTO AddressBook VALUES('Stefan','Salvator','Salvator House','Mystic Fall
 UPDATE AddressBook 
 SET State = 'Maharashtra'
 WHERE FirstName = 'Katrina';
+
+/*----UC5--------*/
+ DELETE FROM AddressBook
+ WHERE FirstName = 'Germie';
+ 
+ /*----UC6--------*/
+ SELECT * FROM AddressBook WHERE City='Bulgeria' OR State='Maharashtra';
+ SELECT * FROM AddressBook WHERE City='Mumbai' OR State='Petrova';
+ 
+  /*----UC7--------*/
+  SELECT City,State, COUNT(*) as AddressCount
+  FROM AddressBook
+  GROUP BY City,State;
+
+  /*----UC8--------*/
+  SELECT FirstName, City
+  FROM AddressBook
+  WHERE City ='Mumbai' 
+  ORDER BY FirstName;
+  
+   /*----UC9--------*/
+  ALTER TABLE AddressBook
+  ADD COLUMN Type varchar (50);
+  
+UPDATE AddressBook 
+SET Type = 'Family'
+WHERE  FirstName = 'Damon'; 
+
+UPDATE AddressBook 
+SET Type = 'Family'
+WHERE  FirstName = 'Stefan'; 
+
+UPDATE AddressBook 
+SET Type = 'Professional'
+WHERE  FirstName = 'Elena'; 
+
+UPDATE AddressBook 
+SET Type = 'Friend'
+WHERE  FirstName = 'Katherine'; 
+
+UPDATE AddressBook 
+SET Type = 'Professional'
+WHERE  FirstName = 'Katrina'; 
+
+Alter table addressbook drop column Type;
+
+CREATE TABLE TYPE(
+Type_Id int not null PRIMARY KEY auto_increment, 
+id int not null,
+Foreign key (id) references addressbook(id) 
+);
+desc Type; 
+
+alter table TYPE add column Type_Name varchar(50) not null;  
+
+insert INTO TYPE VALUES(10,1,'Friend'); 
+insert INTO TYPE VALUES(20,2,'Family');
+insert INTO TYPE VALUES(30,3,'Profession'); 
+
+select * from TYPE;
+
+/*----UC10--------*/
+ SELECT Type_Name, COUNT(*) as TypeCount
+  FROM TYPE
+  group by Type_Name; 
